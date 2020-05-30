@@ -4,7 +4,7 @@ import Browser exposing (Document)
 import Browser.Dom as Dom
 import Browser.Events
 import Browser.Navigation exposing (Key)
-import Dropdown exposing (dropdown, outsideTarget)
+import Dropdown exposing (dropdown, dropdownConfig, outsideTarget, simpleDropdownData)
 import Html exposing (Html, div, text)
 import Html.Attributes exposing (class)
 import Task
@@ -20,26 +20,6 @@ init _ url navKey =
       }
     , Cmd.none
     )
-
-
-data : List String
-data =
-    [ "Plutonium"
-    , "Americium"
-    , "Curium"
-    , "Berkelium"
-    , "Californium"
-    , "Fermium"
-    , "Mendelevium"
-    , "Nobelium"
-    , "Lawrencium"
-    , "Rutherfordium Rutherfordium"
-    , "Dubnium"
-    , "Seaborgium"
-    , "Bohrium"
-    , "Hassium"
-    , "Neptunium"
-    ]
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -82,17 +62,6 @@ update msg model =
                 |> andThen update FocusOnDropown
 
 
-dropdownConfig : Model -> DropdownAttributes
-dropdownConfig model =
-    Types.DropdownAttributes
-        { title = Maybe.withDefault "Select an Element" (Tuple.second model.selectedDropdown)
-        , open = model.dropdownState
-        , id = "dropdown"
-        , value = Maybe.withDefault "" (Tuple.second model.selectedDropdown)
-        , toElement = \( index, element ) -> element
-        }
-
-
 view : Model -> Document Msg
 view model =
     { title = "Hello World"
@@ -101,7 +70,7 @@ view model =
             [ div [ class "show-off-container" ]
                 [ dropdown
                     (dropdownConfig model)
-                    data
+                    simpleDropdownData
                     (\( checked, str ) -> SelectDropdown ( checked, str ))
                     (\opened ->
                         case opened of

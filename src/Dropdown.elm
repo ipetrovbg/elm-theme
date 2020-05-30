@@ -4,7 +4,7 @@ import Html exposing (Attribute, Html, button, div, input, label, li, span, text
 import Html.Attributes as Attributes exposing (checked, class, classList, for, name, type_)
 import Html.Events exposing (keyCode, on, onClick)
 import Json.Decode as Decode
-import Types exposing (DropdownAttributes, Msg(..), ToggledDropdown(..))
+import Types exposing (DropdownAttributes, Model, Msg(..), ToggledDropdown(..))
 
 
 dropdownEnterDecoder : Decode.Decoder Bool
@@ -79,6 +79,37 @@ isOpenDropdown dropdownState =
 
         Closed ->
             False
+
+
+simpleDropdownData : List String
+simpleDropdownData =
+    [ "Plutonium"
+    , "Americium"
+    , "Curium"
+    , "Berkelium"
+    , "Californium"
+    , "Fermium"
+    , "Mendelevium"
+    , "Nobelium"
+    , "Lawrencium"
+    , "Rutherfordium Rutherfordium"
+    , "Dubnium"
+    , "Seaborgium"
+    , "Bohrium"
+    , "Hassium"
+    , "Neptunium"
+    ]
+
+
+dropdownConfig : Model -> DropdownAttributes
+dropdownConfig model =
+    Types.DropdownAttributes
+        { title = Maybe.withDefault "Select an Element" (Tuple.second model.selectedDropdown)
+        , open = model.dropdownState
+        , id = "dropdown"
+        , value = Maybe.withDefault "" (Tuple.second model.selectedDropdown)
+        , toElement = \( index, element ) -> element
+        }
 
 
 dropdown :
