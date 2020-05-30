@@ -1,4 +1,5 @@
 # elm-theme
 ```
-run: npm run start:dev
+// Start dev env
+npm run start:dev
 ```
