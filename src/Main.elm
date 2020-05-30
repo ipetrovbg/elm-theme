@@ -64,7 +64,7 @@ update msg model =
 
 view : Model -> Document Msg
 view model =
-    { title = "Hello World"
+    { title = "Elm Starter Pack"
     , body =
         [ div [ class "show-off-wrapper" ]
             [ div [ class "show-off-container" ]
