@@ -1,7 +1,7 @@
 module Modal exposing (..)
 
 import Core exposing (onEsc)
-import Html exposing (Html, button, div, h3, text)
+import Html exposing (Html, button, div, h3, i, text)
 import Html.Attributes exposing (class, id, tabindex)
 import Html.Events exposing (onClick)
 import Types exposing (ModalAttributes, Msg(..), ToggleState(..))
@@ -23,7 +23,7 @@ view (Types.ModalAttributes { open, backClose, content, titleContent }) close =
                 , div [ class "modal" ]
                     [ div [ class "modal-title" ]
                         [ titleContent
-                        , button [ class "btn", onClick <| close Closed ] [ text "x" ]
+                        , button [ class "btn close-icon", onClick <| close Closed ] [ i [ class "material-icons" ] [ text "close" ] ]
                         ]
                     , div [ class "modal-content" ]
                         [ content

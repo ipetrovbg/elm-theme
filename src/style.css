@@ -179,21 +179,24 @@
     transform: translate(-50%, -50%);
     background-color: #fafafa;
     border-radius: 5px;
+    overflow: hidden;
     padding: 16px;
     box-sizing: border-box;
-    box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 .modal-title {
     position: absolute;
     top: 0;
     padding: 16px;
     box-sizing: border-box;
-    height: 75px;
+    height: 60px;
     width: 100%;
     left: 0;
+    background-color: rgba(245, 245, 245, 0.82);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
 }
 .modal-content {
     position: relative;
@@ -201,10 +204,22 @@
     box-sizing: border-box;
     width: 100%;
     margin-top: 60px;
-    margin-bottom: 50px;
+    margin-bottom: 65px;
     max-height: 60vh;
     max-width: 85vw;
     overflow: auto;
+    line-height: 2;
+}
+.close-icon.btn {
+    padding: 8px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+.close-icon .material-icons {
+    font-size: 0.8rem;
 }
 .modal-actions {
     position: absolute;
@@ -213,6 +228,8 @@
     padding: 16px;
     box-sizing: border-box;
     left: 0;
+    box-shadow: 0 -1px 2px rgba(0,0,0,0.08);
+    background-color: rgba(245, 245, 245, 0.82);
 }
 /* -- Modal -- */
 
