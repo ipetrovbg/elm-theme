@@ -1,3 +1,10 @@
+:root {
+    --focusWidth: 0.15rem;
+    --focusColor: rgba(2, 111, 111, 0.5);
+    --buttonColor: #f0f0f0;
+    --modalBackground: rgba(245, 245, 245, 0.82);
+    --radius: .15rem;
+}
 * {
     font-family: Roboto;
 }
@@ -14,7 +21,7 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #d6d6d6;
-    border-radius: 3px;
+    border-radius: var(--radius);
 }
 
 /* Handle on hover */
@@ -53,15 +60,15 @@
     padding: 10px;
     width: 150px;
     text-align: left;
-    background: #f0f0f0;
+    background: var(--buttonColor);
     box-sizing: border-box;
     position: relative;
     cursor: pointer;
     border: none;
-    border-radius: .25rem;
+    border-radius: var(--radius);
 }
 .dropdown .dropdown-button-title:focus {
-    box-shadow: 0 0 0 0.2rem rgba(2, 111, 111, 0.5);
+    box-shadow: 0 0 0 var(--focusWidth) var(--focusColor);
     outline: none;
 }
 .dropdown .dropdown-button-title > span.title {
@@ -118,7 +125,7 @@
     overflow-y: auto;
     box-sizing: border-box;
     box-shadow: -1px 6px 16px rgba(0, 0, 0, 0.08);
-    border-radius: 5px;
+    border-radius: var(--radius);
 }
 .dropdown-items-container .dropdown-item {
     font: 0.9rem sans-serif;
@@ -144,7 +151,7 @@
     white-space: nowrap;
 }
 .dropdown-items-container label:focus, .dropdown-items-container label:hover {
-    background-color: #fafafa;
+    background-color: var(--modalBackground);
     cursor: pointer;
 }
 .dropdown-items-container input[type="radio"] {
@@ -178,7 +185,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fafafa;
-    border-radius: 5px;
+    border-radius: var(--radius);
     overflow: hidden;
     padding: 16px;
     box-sizing: border-box;
@@ -192,11 +199,16 @@
     height: 60px;
     width: 100%;
     left: 0;
-    background-color: rgba(245, 245, 245, 0.82);
+    background-color: var(--modalBackground);
     display: flex;
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+.modal-title > * {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .modal-content {
     position: relative;
@@ -212,7 +224,7 @@
 }
 .close-icon.btn {
     padding: 8px;
-    border-radius: 5px;
+    border-radius: var(--radius);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -229,7 +241,7 @@
     box-sizing: border-box;
     left: 0;
     box-shadow: 0 -1px 2px rgba(0,0,0,0.08);
-    background-color: rgba(245, 245, 245, 0.82);
+    background-color: var(--modalBackground);
 }
 /* -- Modal -- */
 
@@ -237,15 +249,16 @@
 .btn {
     border: none;
     padding: 8px 16px;
-    border-radius: 5px;
+    border-radius: var(--radius);
     cursor: pointer;
+    background: var(--buttonColor);
 }
 .btn:focus {
-    box-shadow: 0 0 0 0.2rem rgba(2, 111, 111, 0.5);
+    box-shadow: 0 0 0 var(--focusWidth) var(--focusColor);
     outline: none;
 }
 /* -- Button -- */
 .content {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
 }
