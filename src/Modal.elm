@@ -22,7 +22,9 @@ view (Types.ModalAttributes { open, backClose, content, titleContent }) close =
                         div [ class "modal-overlay" ] []
                 , div [ class "modal" ]
                     [ div [ class "modal-title" ]
-                        [ titleContent ]
+                        [ titleContent
+                        , button [ class "btn", onClick <| close Closed ] [ text "x" ]
+                        ]
                     , div [ class "modal-content" ]
                         [ content
                         ]

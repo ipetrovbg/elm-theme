@@ -4,10 +4,9 @@ import Browser exposing (Document)
 import Browser.Dom as Dom
 import Browser.Events
 import Browser.Navigation exposing (Key)
-import Core exposing (onEnterOrEsc, onEsc)
-import Dropdown exposing (dropdown, dropdownConfig, outsideTarget, simpleDropdownData)
+import Dropdown exposing (outsideTarget)
 import Html exposing (Html, button, div, h3, text)
-import Html.Attributes exposing (class, id, tabindex)
+import Html.Attributes exposing (class, id)
 import Html.Events exposing (onClick)
 import Modal
 import Task
@@ -90,9 +89,9 @@ view model =
         [ div [ class "wrapper" ]
             [ div [ class "show-off-wrapper" ]
                 [ div [ class "show-off-container" ]
-                    [ dropdown
-                        (dropdownConfig model)
-                        simpleDropdownData
+                    [ Dropdown.view
+                        (Dropdown.simpleConfig model)
+                        Dropdown.simpleDropdownData
                         (\( checked, str ) -> SelectDropdown ( checked, str ))
                         (\opened ->
                             case opened of
@@ -109,11 +108,11 @@ view model =
             , Modal.view
                 (ModalAttributes
                     { open = model.modalState
-                    , titleContent = h3 [] [ text "Custom Modal" ]
+                    , titleContent = h3 [] [ text "Modal title" ]
                     , backClose = True
                     , content =
-                        div [ class "" ]
-                            [ text "custom content" ]
+                        div [ class "content" ]
+                            [ text "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." ]
                     }
                 )
                 (\modalState ->

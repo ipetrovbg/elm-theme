@@ -86,8 +86,8 @@ simpleDropdownData =
     ]
 
 
-dropdownConfig : Model -> DropdownAttributes
-dropdownConfig model =
+simpleConfig : Model -> DropdownAttributes
+simpleConfig model =
     Types.DropdownAttributes
         { title = Maybe.withDefault "Select an Element" (Tuple.second model.selectedDropdown)
         , open = model.dropdownState
@@ -97,14 +97,13 @@ dropdownConfig model =
         }
 
 
-dropdown :
+view :
     DropdownAttributes
     -> List String
     -> (( Int, String ) -> msg)
     -> (ToggleState -> msg)
     -> Html msg
-dropdown (Types.DropdownAttributes { title, open, id, value, toElement }) data select onOpen =
-    --onOpen
+view (Types.DropdownAttributes { title, open, id, value, toElement }) data select onOpen =
     div [ class "dropdown", Attributes.id id ]
         [ div []
             [ button
