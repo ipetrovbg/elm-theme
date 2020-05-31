@@ -1,9 +1,13 @@
 # elm-theme
+## Start prod env
 ```
-// Start prod env
 npm start
-// Start debug env
+```
+## Start debug env
+```
 npm run start:dev
-// build
+```
+## Build
+```
 npm run build
 ```
