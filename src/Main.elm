@@ -73,7 +73,7 @@ update msg model =
 
         --|> andThen update FocusOnDropown
         ToggleModal Opened ->
-            ( { model | modalState = Opened }, Cmd.none )
+            ( { model | modalState = Opened, dropdownState = Closed }, Cmd.none )
                 |> andThen update (FocusOn "modal-close")
 
         ToggleModal Closed ->
