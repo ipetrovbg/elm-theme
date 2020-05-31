@@ -1,10 +1,11 @@
 module Dropdown exposing (..)
 
+import Core exposing (onEnterOrEsc)
 import Html exposing (Attribute, Html, button, div, input, label, li, span, text, ul)
 import Html.Attributes as Attributes exposing (checked, class, classList, for, name, type_)
 import Html.Events exposing (keyCode, on, onClick)
 import Json.Decode as Decode
-import Types exposing (DropdownAttributes, Model, Msg(..), ToggledDropdown(..))
+import Types exposing (DropdownAttributes, Model, Msg(..), ToggleState(..))
 
 
 dropdownEnterDecoder : Decode.Decoder Bool
@@ -55,23 +56,7 @@ outsideTarget dropdownId =
             )
 
 
-onEnterOrEsc : msg -> msg -> Attribute msg
-onEnterOrEsc enter esc =
-    let
-        isEnter code =
-            if code == 13 then
-                Decode.succeed enter
-
-            else if code == 27 then
-                Decode.succeed esc
-
-            else
-                Decode.fail "not ENTER"
-    in
-    on "keydown" (Decode.andThen isEnter keyCode)
-
-
-isOpenDropdown : ToggledDropdown -> Bool
+isOpenDropdown : ToggleState -> Bool
 isOpenDropdown dropdownState =
     case dropdownState of
         Opened ->
@@ -116,7 +101,7 @@ dropdown :
     DropdownAttributes
     -> List String
     -> (( Int, String ) -> msg)
-    -> (ToggledDropdown -> msg)
+    -> (ToggleState -> msg)
     -> Html msg
 dropdown (Types.DropdownAttributes { title, open, id, value, toElement }) data select onOpen =
     --onOpen
