@@ -1,4 +1,4 @@
-# elm-theme
+# Elm Theme
 ## Start prod env
 ```
 npm start
